@@ -6,6 +6,7 @@ char stac[5];  /* スタック */
 int q_st = 0;
 int q_end = 0;
 int s_ct = 0;
+int q_flg = 0;
 
 /* 関数プロトタイプ */
 void enq(char);
@@ -36,11 +37,15 @@ int main()
 }
 
 void enq(char n){
+    if(q_flg == 0)
+        q_flg = 1;
     que[q_st] = n;
     q_st++;
 }
 
 char deq(){
+    if(q_flg == 0)
+        return -1;
     char n = que[q_end];
     que[q_end] = '\0';
     q_end++;
